@@ -1,9 +1,7 @@
-import UIKit
 import ObjectMapper
 import MapKit
 
 class Station: NSObject, Mappable, MKAnnotation {
-  
   var id: Int?
   var name: String?
   var coordinate: CLLocationCoordinate2D
