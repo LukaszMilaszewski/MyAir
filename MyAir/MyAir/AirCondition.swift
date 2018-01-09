@@ -1,5 +1,7 @@
 import ObjectMapper
 
+
+
 class AirCondition: Mappable {
   var date: String?
   var quality: String?

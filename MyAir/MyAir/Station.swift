@@ -5,6 +5,7 @@ class Station: NSObject, Mappable, MKAnnotation {
   var id: Int?
   var name: String?
   var coordinate: CLLocationCoordinate2D
+  var condition: AirCondition?
   
   required init?(map: Map) {
     coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
