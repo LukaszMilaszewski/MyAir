@@ -6,6 +6,22 @@ class Station: NSObject, Mappable, MKAnnotation {
   var name: String?
   var coordinate: CLLocationCoordinate2D
   var condition: AirCondition?
+ 
+  var title: String? {
+    if (name?.isEmpty)! {
+      return "STACJA BEZ NAZWY!"
+    } else {
+      return name
+    }
+  }
+  
+  var subtitle: String? {
+    if (condition?.quality?.isEmpty)! {
+      return "BRAK DANYCH!"
+    } else {
+      return condition?.quality
+    }
+  }
   
   required init?(map: Map) {
     coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)

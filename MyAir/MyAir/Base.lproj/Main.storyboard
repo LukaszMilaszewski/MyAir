@@ -38,11 +38,27 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="JKI-xW-2lu" id="u7h-L0-HL4"/>
+                        <segue destination="HRO-pb-rXe" kind="show" identifier="StationDetails" id="pBy-dC-EWd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="364" y="31.934032983508249"/>
+        </scene>
+        <!--Station Details View Controller-->
+        <scene sceneID="2m7-Jd-Xwd">
+            <objects>
+                <viewController id="HRO-pb-rXe" customClass="StationDetailsViewController" customModule="MyAir" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qqx-tm-iSg" customClass="Stat">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="0cf-Hw-bJ6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ndk-1l-eaB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1068" y="35"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hAi-iY-XTk">

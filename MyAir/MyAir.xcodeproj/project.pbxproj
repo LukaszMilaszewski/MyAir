@@ -14,9 +14,8 @@
 		8E8677C02002896E0044089F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E8677BF2002896E0044089F /* Assets.xcassets */; };
 		8E8677C32002896E0044089F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E8677C12002896E0044089F /* LaunchScreen.storyboard */; };
 		8E8677CB200292B60044089F /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8677CA200292B60044089F /* Station.swift */; };
-		8E8677CF2002F75D0044089F /* CalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E8677CE2002F75D0044089F /* CalloutView.xib */; };
-		8E8677D12002F7720044089F /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8677D02002F7720044089F /* CalloutView.swift */; };
 		8E8677D82002FF870044089F /* AirCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8677D72002FF870044089F /* AirCondition.swift */; };
+		8E8677DA20058FCE0044089F /* StationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8677D920058FCE0044089F /* StationDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,9 +30,8 @@
 		8E8677C22002896E0044089F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E8677C42002896E0044089F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E8677CA200292B60044089F /* Station.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; tabWidth = 2; };
-		8E8677CE2002F75D0044089F /* CalloutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalloutView.xib; sourceTree = "<group>"; };
-		8E8677D02002F7720044089F /* CalloutView.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = CalloutView.swift; sourceTree = "<group>"; tabWidth = 2; };
 		8E8677D72002FF870044089F /* AirCondition.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = AirCondition.swift; sourceTree = "<group>"; tabWidth = 2; };
+		8E8677D920058FCE0044089F /* StationDetailsViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = StationDetailsViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +76,6 @@
 		8E8677B72002896E0044089F /* MyAir */ = {
 			isa = PBXGroup;
 			children = (
-				8E8677D22002F7B20044089F /* CalloutView */,
 				8E8677B82002896E0044089F /* AppDelegate.swift */,
 				8E8677BA2002896E0044089F /* MapViewController.swift */,
 				8E8677BC2002896E0044089F /* Main.storyboard */,
@@ -87,17 +84,9 @@
 				8E8677C42002896E0044089F /* Info.plist */,
 				8E8677CA200292B60044089F /* Station.swift */,
 				8E8677D72002FF870044089F /* AirCondition.swift */,
+				8E8677D920058FCE0044089F /* StationDetailsViewController.swift */,
 			);
 			path = MyAir;
-			sourceTree = "<group>";
-		};
-		8E8677D22002F7B20044089F /* CalloutView */ = {
-			isa = PBXGroup;
-			children = (
-				8E8677CE2002F75D0044089F /* CalloutView.xib */,
-				8E8677D02002F7720044089F /* CalloutView.swift */,
-			);
-			path = CalloutView;
 			sourceTree = "<group>";
 		};
 		DDAB8B5E0F388FE509377E4A /* Frameworks */ = {
@@ -173,7 +162,6 @@
 				8E8677C32002896E0044089F /* LaunchScreen.storyboard in Resources */,
 				8E8677C02002896E0044089F /* Assets.xcassets in Resources */,
 				8E8677BE2002896E0044089F /* Main.storyboard in Resources */,
-				8E8677CF2002F75D0044089F /* CalloutView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,13 +177,17 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyAir/Pods-MyAir-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/YNDropDownMenu/YNDropDownMenu.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YNDropDownMenu.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -245,11 +237,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E8677DA20058FCE0044089F /* StationDetailsViewController.swift in Sources */,
 				8E8677BB2002896E0044089F /* MapViewController.swift in Sources */,
 				8E8677B92002896E0044089F /* AppDelegate.swift in Sources */,
 				8E8677CB200292B60044089F /* Station.swift in Sources */,
 				8E8677D82002FF870044089F /* AirCondition.swift in Sources */,
-				8E8677D12002F7720044089F /* CalloutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

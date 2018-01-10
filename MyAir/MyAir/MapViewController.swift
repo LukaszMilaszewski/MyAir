@@ -7,11 +7,12 @@ import CoreLocation
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
   
   @IBOutlet weak var mapView: MKMapView!
-  let locationManager = CLLocationManager()
   
-  var stations = [Station]()
+  let locationManager = CLLocationManager()
+  var stations = [Int: Station]()
   
     @IBAction func getLocation() {
+          dump(stations)
       locationManager.delegate = self
       locationManager.requestWhenInUseAuthorization()
       locationManager.startUpdatingLocation()
@@ -29,14 +30,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             if let airCondition = response.result.value {
               station.condition = airCondition
             }
-            self.stations.append(station)
+            self.stations[station.id!] = station
             self.mapView.addAnnotation(station)
           }
         }
       }
     }
   }
-  
+
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     let location = locations[0]
     let center = location.coordinate
@@ -47,23 +48,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     mapView.showsUserLocation = true
   }
   
-  func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    let station = view.annotation as! Station
-    let views = Bundle.main.loadNibNamed("CalloutView", owner: nil, options: nil)
-    let calloutView = views?[0] as! CalloutView
-    
-    calloutView.stationName.text = station.name!
-    calloutView.dateLabel.text = station.condition?.date
-    calloutView.indexLabel.text = station.condition?.quality
-    
-    calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: -calloutView.bounds.size.height*0.52)
-    view.addSubview(calloutView)
-    mapView.setCenter((view.annotation?.coordinate)!, animated: true)
+  @objc func showStationDetails(sender: UIButton) {
+    performSegue(withIdentifier: "StationDetails", sender: sender)
   }
   
-  func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-    for subview in view.subviews {
-      subview.removeFromSuperview()
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "StationDetails" {
+      let button = sender as! UIButton
+      if let station = stations[button.tag] {
+        let controller = segue.destination as! StationDetailsViewController
+        controller.station = station
+      }
     }
   }
   
@@ -90,14 +85,37 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
   }
   
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-    var view:MKPinAnnotationView?
-    if let station = annotation as? Station {
-      view = MKPinAnnotationView(annotation: station, reuseIdentifier: String(describing: station.id))
-      view?.pinTintColor = pinColor(name: station.condition!.quality!)
-    } else {
+    
+    guard annotation is Station else {
       return nil
     }
-    return view
+    
+    let station = annotation as! Station
+    
+      let identifier = "station"
+      var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+      if annotationView == nil {
+        let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        pinView.isEnabled = true
+        pinView.canShowCallout = true
+        pinView.animatesDrop = false
+        pinView.pinTintColor = pinColor(name: station.condition!.quality!)
+        pinView.tintColor = UIColor(white: 0.0, alpha: 0.5)
+        
+        let rightButton = UIButton(type: .detailDisclosure)
+        rightButton.addTarget(self, action: #selector(showStationDetails), for: .touchUpInside)
+        pinView.rightCalloutAccessoryView = rightButton
+        
+        annotationView = pinView
+      }
+      
+      if let annotationView = annotationView {
+        annotationView.annotation = annotation
+        
+        let button = annotationView.rightCalloutAccessoryView as! UIButton
+        button.tag = station.id!
+      }
+      
+      return annotationView
   }
 }
-
