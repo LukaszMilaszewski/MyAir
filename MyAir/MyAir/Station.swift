@@ -8,22 +8,15 @@ class Station: NSObject, Mappable, MKAnnotation {
   var condition: AirCondition?
   
   var title: String? {
-    if (name?.isEmpty)! {
-      return "STACJA BEZ NAZWY!"
-    } else {
-      return name
-    }
+    return (name?.isEmpty)! ? "STACJA BEZ NAZWY!" : name
   }
   
   var subtitle: String? {
-    if (condition?.quality?.isEmpty)! {
-      return "BRAK DANYCH!"
-    } else {
-      return condition?.quality
-    }
+    return (condition?.quality?.isEmpty)! ? "BRAK DANYCH!" : condition?.quality
   }
   
   required init?(map: Map) {
+    // dummy value
     coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
   }
   
