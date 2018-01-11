@@ -6,7 +6,7 @@ class Station: NSObject, Mappable, MKAnnotation {
   var name: String?
   var coordinate: CLLocationCoordinate2D
   var condition: AirCondition?
- 
+  
   var title: String? {
     if (name?.isEmpty)! {
       return "STACJA BEZ NAZWY!"

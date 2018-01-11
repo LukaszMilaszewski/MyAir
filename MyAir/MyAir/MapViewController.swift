@@ -3,6 +3,8 @@ import AlamofireObjectMapper
 import Alamofire
 import MapKit
 import CoreLocation
+import YNDropDownMenu
+
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
   
@@ -12,7 +14,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
   var stations = [Int: Station]()
   
     @IBAction func getLocation() {
-          dump(stations)
       locationManager.delegate = self
       locationManager.requestWhenInUseAuthorization()
       locationManager.startUpdatingLocation()
@@ -20,7 +21,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(true)
-    
+
     let URL = "http://api.gios.gov.pl/pjp-api/rest/station/findAll"
     request(URL).responseArray { (response: DataResponse<[Station]>) in
       if let data = response.result.value {
@@ -29,11 +30,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
           request(URL).responseObject { (response: DataResponse<AirCondition>) in
             if let airCondition = response.result.value {
               station.condition = airCondition
+            } else {
+              // show alert also
             }
             self.stations[station.id!] = station
             self.mapView.addAnnotation(station)
           }
         }
+      } else {
+        let alertController = UIAlertController(title: "Brak danych", message:
+          "Prawdopodobnie serwer z danymi pomiarowymi nie działa. Spróbuj ponownie za chwilę.", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Spróbuj ponownie", style: UIAlertActionStyle.default,handler: { action in
+          print("ładujeeeeemy")
+          self.viewWillAppear(true)
+        }))
+        
+        self.present(alertController, animated: true, completion: nil)
       }
     }
   }
