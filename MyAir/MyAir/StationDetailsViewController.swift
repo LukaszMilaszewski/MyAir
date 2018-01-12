@@ -10,7 +10,6 @@ class StationDetailsViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     if let station = station {
       title = station.name
       configureChartData()

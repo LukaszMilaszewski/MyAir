@@ -19,6 +19,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
   
   //MARK: - obtain data
   
+  @IBAction func reloadData(_ sender: Any) {
+    viewDidLoad()
+  }
+  
   func obtainAirData() {
     let URL = "http://api.gios.gov.pl/pjp-api/rest/station/findAll"
     request(URL).responseArray { (response: DataResponse<[Station]>) in
@@ -137,3 +141,4 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     performSegue(withIdentifier: "StationDetails", sender: sender)
   }
 }
+
