@@ -5,17 +5,17 @@ extension UIColor {
   func qualityColor(name: String) -> UIColor {
     switch name {
     case "Bardzo dobry":
-      return UIColor.blue
+      return UIColor(red: 16/255, green: 142/255, blue: 7/255, alpha: 1)
     case "Dobry":
-      return UIColor.green
+      return UIColor(red: 15/255, green: 209/255, blue: 2/255, alpha: 1)
     case "Umiarkowany":
-      return UIColor.yellow
+      return UIColor(red: 249/255, green: 181/255, blue: 7/255, alpha: 1)
     case "Dostateczny":
-      return UIColor.red
+      return UIColor(red: 249/255, green: 124/255, blue: 7/255, alpha: 1)
     case "Zły":
-      return UIColor.white
+      return UIColor(red: 232/255, green: 4/255, blue: 4/255, alpha: 1)
     case "Bardzo zły":
-      return UIColor.gray
+      return UIColor(red: 109/255, green: 2/255, blue: 2/255, alpha: 1)
     default:
       return UIColor.black
     }
@@ -24,17 +24,17 @@ extension UIColor {
   func qualityColor(value: Double) -> UIColor {
     switch value {
     case 1:
-      return UIColor.green
+      return UIColor(red: 109/255, green: 2/255, blue: 2/255, alpha: 1)
     case 2:
-      return UIColor.red
+      return UIColor(red: 232/255, green: 4/255, blue: 4/255, alpha: 1)
     case 3:
-      return UIColor.brown
+      return UIColor(red: 249/255, green: 124/255, blue: 7/255, alpha: 1)
     case 4:
-      return UIColor.blue
+      return UIColor(red: 249/255, green: 181/255, blue: 7/255, alpha: 1)
     case 5:
-      return UIColor.yellow
+      return UIColor(red: 15/255, green: 209/255, blue: 2/255, alpha: 1)
     case 6:
-      return UIColor.purple
+      return UIColor(red: 16/255, green: 142/255, blue: 7/255, alpha: 1)
     default:
       return UIColor.clear
     }
