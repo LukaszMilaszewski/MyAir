@@ -61,7 +61,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
   
   @IBAction func getLocation() {
     locationManager.requestAlwaysAuthorization()
-    print ("blabla")
     if CLLocationManager.locationServicesEnabled() {
       locationManager.delegate = self
       locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
@@ -70,16 +69,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
   }
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    print("temp")
     if let location = locations.first {
-      print("lecimy")
       let center = location.coordinate
       let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
       let region = MKCoordinateRegion(center: center, span: span)
       
       mapView.setRegion(region, animated: true)
       mapView.showsUserLocation = true
-      
     }
     locationManager.stopUpdatingLocation()
   }

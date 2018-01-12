@@ -17,6 +17,14 @@ class StationDetailsViewController: UIViewController {
     }
   }
   
+  @IBAction func showPage() {
+    if let url = URL(string: "https://powietrze.gios.gov.pl/pjp/content/measuring_air_assessment_rating_info") {
+      UIApplication.shared.open(url, options: [:])
+    }
+  }
+  
+  //MARK: - chart
+  
   func getData() -> [ChartDataEntry] {
     var data = [ChartDataEntry]()
     
