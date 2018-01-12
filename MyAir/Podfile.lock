@@ -7,21 +7,18 @@ PODS:
     - Charts/Core (= 3.0.4)
   - Charts/Core (3.0.4)
   - ObjectMapper (3.1.0)
-  - YNDropDownMenu (3.0.1)
 
 DEPENDENCIES:
   - AlamofireObjectMapper (~> 5.0)
   - Charts
   - ObjectMapper (~> 3.1)
-  - YNDropDownMenu
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
   Charts: 0705898046257443f0afbbc3179f4b67507b6e48
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
-  YNDropDownMenu: 967ebe0c633ce8f40e8667574525aa230ba24560
 
-PODFILE CHECKSUM: fba953ecbae368835c9007a888b7b69f59ead9e8
+PODFILE CHECKSUM: fdd108f214dedcd40f635905b060cc03df19fd13
 
 COCOAPODS: 1.4.0.rc.1

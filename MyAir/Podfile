@@ -7,8 +7,6 @@ target 'MyAir' do
   pod 'AlamofireObjectMapper', '~> 5.0'
   pod 'ObjectMapper', '~> 3.1'
   pod 'Charts', :inhibit_warnings => true
-  pod 'YNDropDownMenu'
-  #pod 'GoogleMaps'
   # Pods for MyAir
 
 end

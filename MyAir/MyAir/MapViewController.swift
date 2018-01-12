@@ -3,7 +3,6 @@ import AlamofireObjectMapper
 import Alamofire
 import MapKit
 import CoreLocation
-import YNDropDownMenu
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
   
