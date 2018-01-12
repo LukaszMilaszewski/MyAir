@@ -53,7 +53,7 @@ class StationDetailsViewController: UIViewController {
     barChart.borderLineWidth = 2
     barChart.xAxis.granularity = 1
     barChart.highlighter = nil
-    barChart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
+    barChart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInCirc)
     barChart.xAxis.labelPosition = XAxis.LabelPosition.bottom
     
     barChart.drawValueAboveBarEnabled = false
