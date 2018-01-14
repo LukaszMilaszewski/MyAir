@@ -48,7 +48,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
   
   func showAlert() {
     let alertController = UIAlertController(title: "Brak danych", message:
-      "Prawdopodobnie serwer z danymi pomiarowymi nie działa. Spróbuj ponownie za chwilę.", preferredStyle: UIAlertControllerStyle.alert)
+      "Prawdopodobnie serwer z danymi pomiarowymi nie działa poprawnie. Spróbuj ponownie za chwilę.", preferredStyle: UIAlertControllerStyle.alert)
     alertController.addAction(UIAlertAction(title: "Spróbuj ponownie", style: UIAlertActionStyle.default,handler: { action in
       self.viewWillAppear(true)
     }))
